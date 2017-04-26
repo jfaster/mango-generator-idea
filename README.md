@@ -1,0 +1,1 @@
+# mango-generator-idea
