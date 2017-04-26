@@ -1,0 +1,44 @@
+<idea-plugin>
+  <id>com.hsun.hsuns.unique.plugin.id</id>
+  <name>MangoG</name>
+  <version>1.0</version>
+  <vendor email="hsun924@sina.com" url="http://www.hsuns.com">hsuns</vendor>
+
+  <description><![CDATA[
+      mango代码生成插件<br>
+      包名：bean\dao\service\service.impl\control<br>
+      使用：在需要生成的java实体类上右键->MangoG
+    ]]></description>
+
+  <change-notes><![CDATA[
+      v0.0.2:增加建表语句生成<br>
+      v0.0.1:半成品<br>
+    ]]>
+  </change-notes>
+
+  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
+  <idea-version since-build="145.0"/>
+
+  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+       on how to target different products -->
+  <!-- uncomment to enable plugin in all products
+  <depends>com.intellij.modules.lang</depends>
+  -->
+
+  <extensions defaultExtensionNs="com.intellij">
+    <!-- Add your extensions here -->
+  </extensions>
+
+  <actions>
+    <!-- Add your actions here -->
+    <action id="MangoG" class="com.hsun.mango.MangoGAction" text="MangoG" description="MangoG">
+      <add-to-group group-id="ProjectViewPopupMenu" anchor="first"/>
+    </action>
+  </actions>
+
+  <application-components>
+    <component>
+      <implementation-class>com.hsun.mango.MangoComponent</implementation-class>
+    </component>
+  </application-components>
+</idea-plugin>
