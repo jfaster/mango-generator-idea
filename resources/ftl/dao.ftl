@@ -16,7 +16,7 @@ import java.util.List;
     </#list>
 })
 public interface ${bean}Dao {
-    String COLUMNS = "<#list keys as key>${key}<#if key_has_next>,</#if></#list>";
+    String COLUMNS = "<#list keys as key>${results[key]}<#if key_has_next>,</#if></#list>";
 
     @SQL("INSERT INTO #table(" + COLUMNS + ") VALUES (<#list keys as key>:1.${key}<#if key_has_next>,</#if></#list>)")
     void save(${bean} object);
