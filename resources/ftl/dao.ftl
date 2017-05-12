@@ -4,6 +4,7 @@ import ${basePackage}.bean.${bean};
 import org.jfaster.mango.annotation.DB;
 import org.jfaster.mango.annotation.Result;
 import org.jfaster.mango.annotation.Results;
+import org.jfaster.mango.annotation.ReturnGeneratedId;
 import org.jfaster.mango.annotation.SQL;
 
 import java.util.List;
@@ -16,12 +17,13 @@ import java.util.List;
     </#list>
 })
 public interface ${bean}Dao {
-    String COLUMNS = "<#list keys as key>${results[key]}<#if key_has_next>,</#if></#list>";
+    String COLUMNS = "<#list keys as key>${results[key]}<#if key_has_next>, </#if></#list>";
 
-    @SQL("INSERT INTO #table(" + COLUMNS + ") VALUES (<#list keys as key>:1.${key}<#if key_has_next>,</#if></#list>)")
-    void save(${bean} object);
+    @ReturnGeneratedId
+    @SQL("INSERT INTO #table(" + COLUMNS + ") VALUES (<#list keys as key>:1.${key}<#if key_has_next>, </#if></#list>)")
+    long save(${bean} object);
 
-    @SQL("UPDATE #table <#list keys as key>SET ${key} = :${key}<#if key_has_next>,</#if></#list> WHERE id = :id")
+    @SQL("UPDATE #table <#list keys as key>SET ${results[key]} = :${key}<#if key_has_next>, </#if></#list> WHERE id = :id")
     void update(${bean} object);
 
     @SQL("SELECT " + COLUMNS + " FROM #table WHERE id = :1 ")

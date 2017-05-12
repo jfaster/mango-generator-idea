@@ -3,6 +3,7 @@ package com.hsun.mango;
 import com.intellij.openapi.components.ApplicationComponent;
 import com.intellij.psi.PsiField;
 import com.intellij.psi.PsiType;
+import org.apache.commons.lang.StringUtils;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
@@ -34,11 +35,11 @@ public class MangoComponent implements ApplicationComponent {
     }
 
     public void g(String bean, String basePackage, String path, PsiField[] fields) {
-        Map map = new HashMap();
+        Map<String, Object> map = new HashMap();
         map.put("bean", bean);
         map.put("table", "t_" + bean.toLowerCase());
         map.put("basePackage", basePackage);
-        Map results = new HashMap();
+        Map<String, String> results = new HashMap();
         for (PsiField psiField : fields) {
             String cname = psiField.getName();
             PsiType type = psiField.getType();
@@ -53,11 +54,11 @@ public class MangoComponent implements ApplicationComponent {
     }
 
 
-    private String p(String type, String name) {
+    private static String p(String type, String name) {
         switch (type) {
             case "java.lang.Long":
             case "long":
-                return "n_" + name;
+                return "n_" + c2_(name);
             case "java.lang.Integer":
             case "int":
             case "java.lang.Double":
@@ -68,11 +69,29 @@ public class MangoComponent implements ApplicationComponent {
             case "short":
             case "java.lang.Boolean":
             case "boolean":
-                return "n_" + name;
+                return "n_" + c2_(name);
             case "java.lang.String":
-                return "c_" + name;
+                return "c_" + c2_(name);
             default:
-                return "c_" + name;
+                return "c_" + c2_(name);
         }
+    }
+
+    private static String c2_(String str){
+        if (StringUtils.isEmpty(str)) {
+            return "";
+        }
+
+        StringBuilder sb = new StringBuilder();
+
+        for (int i = 0; i < str.length(); i++ ) {
+            char c = str.charAt(i);
+            if (Character.isUpperCase(c)) {
+                sb.append("_").append(Character.toLowerCase(c));
+            } else {
+                sb.append(c);
+            }
+        }
+        return sb.toString();
     }
 }

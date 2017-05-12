@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface I${bean}Service {
 
-    void save(${bean} object);
+    long save(${bean} object);
 
     void update(${bean} object);
 

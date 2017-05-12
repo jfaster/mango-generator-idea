@@ -15,8 +15,8 @@ public class ${bean}ServiceImpl implements I${bean}Service {
     private ${bean}Dao dao;
 
     @Override
-    public void save(${bean} object) {
-        this.dao.save(object);
+    public long save(${bean} object) {
+        return this.dao.save(object);
     }
 
     @Override
