@@ -38,7 +38,7 @@ public class MangoComponent implements ApplicationComponent {
     public void g(String bean, String basePackage, String path, PsiField[] fields) {
         Map<String, Object> map = new HashMap();
         map.put("bean", bean);
-        map.put("table", "t_" + bean.toLowerCase());
+        map.put("table", "t" + c2_(bean));
         map.put("basePackage", basePackage);
         Map<String, String> results = new LinkedHashMap<>();
         for (PsiField psiField : fields) {
