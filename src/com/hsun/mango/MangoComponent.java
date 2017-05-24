@@ -7,6 +7,7 @@ import org.apache.commons.lang.StringUtils;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
@@ -39,7 +40,7 @@ public class MangoComponent implements ApplicationComponent {
         map.put("bean", bean);
         map.put("table", "t_" + bean.toLowerCase());
         map.put("basePackage", basePackage);
-        Map<String, String> results = new HashMap();
+        Map<String, String> results = new LinkedHashMap<>();
         for (PsiField psiField : fields) {
             String cname = psiField.getName();
             PsiType type = psiField.getType();
