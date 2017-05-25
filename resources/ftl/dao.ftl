@@ -23,15 +23,15 @@ public interface ${bean}Dao {
     @SQL("INSERT INTO #table(" + COLUMNS + ") VALUES (<#list keys as key>:1.${key}<#if key_has_next>, </#if></#list>)")
     long save(${bean} object);
 
-    @SQL("UPDATE #table <#list keys as key>SET ${results[key]} = :${key}<#if key_has_next>, </#if></#list> WHERE id = :id")
+    @SQL("UPDATE #table SET <#list keys as key>${results[key]} = :${key}<#if key_has_next>, </#if></#list> WHERE n_id = :id")
     void update(${bean} object);
 
-    @SQL("SELECT " + COLUMNS + " FROM #table WHERE id = :1 ")
+    @SQL("SELECT " + COLUMNS + " FROM #table WHERE n_id = :1 ")
     ${bean} get(Long id);
 
     @SQL("SELECT " + COLUMNS + " FROM #table")
     List<${bean}> list();
 
-    @SQL("DELETE FROM #table WHERE id = :1")
+    @SQL("DELETE FROM #table WHERE n_id = :1")
     void del(Long id);
 }

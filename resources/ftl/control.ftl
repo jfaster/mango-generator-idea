@@ -17,13 +17,11 @@ public class ${bean}Control {
     private I${bean}Service service;
 
     @RequestMapping("save")
-    @ResponseBody
     public void save(${bean} object) {
         this.service.save(object);
     }
 
     @RequestMapping("update")
-    @ResponseBody
     public void update(${bean} object) {
         this.service.update(object);
     }
@@ -41,7 +39,6 @@ public class ${bean}Control {
     }
 
     @RequestMapping("del")
-    @ResponseBody
     public void del(Long id) {
         this.service.del(id);
     }
