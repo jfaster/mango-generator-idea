@@ -13,6 +13,9 @@ import com.intellij.psi.PsiClass;
 import com.intellij.psi.PsiField;
 import com.intellij.psi.search.GlobalSearchScope;
 import com.intellij.psi.search.PsiShortNamesCache;
+import freemarker.template.TemplateException;
+
+import java.io.IOException;
 
 /**
  * @author hsun
@@ -41,7 +44,11 @@ public class MangoGAction extends AnAction {
         basePackage = basePackage.substring(0, basePackage.lastIndexOf("."));
         Application application = ApplicationManager.getApplication();
         MangoComponent component = application.getComponent(MangoComponent.class);
-        component.g(file.getNameWithoutExtension(), basePackage, file.getParent().getParent().getPath(),fields);
+        try {
+            component.g(file.getNameWithoutExtension(), basePackage, file.getParent().getParent().getPath(),fields);
+        } catch (Exception e1) {
+            Messages.showMessageDialog(project, String.format("代码生成失败\n%s", e1.getMessage()), "MangoG", Messages.getErrorIcon());
+        }
 
         Messages.showMessageDialog(project, "代码生成成功", "MangoG", Messages.getInformationIcon());
     }

@@ -2,11 +2,9 @@ package com.hsun.mango;
 
 import freemarker.template.Configuration;
 import freemarker.template.Template;
+import freemarker.template.TemplateException;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.OutputStreamWriter;
-import java.io.Writer;
+import java.io.*;
 
 /**
  * @author hsun
@@ -23,20 +21,16 @@ public class SourceGenerator {
         config.setDefaultEncoding("UTF-8");
     }
 
-    public static void generate(String template, Object data, String target) {
-        try {
-            Template tp = config.getTemplate(template);
+    public static void generate(String template, Object data, String target) throws IOException, TemplateException {
+        Template tp = config.getTemplate(template);
 
-            File file = new File(target);
-            if (!file.getParentFile().exists()) file.getParentFile().mkdirs();
+        File file = new File(target);
+        if (!file.getParentFile().exists()) file.getParentFile().mkdirs();
 
-            Writer out = new OutputStreamWriter(new FileOutputStream(file), "UTF-8");
-            tp.setEncoding("UTF-8");
-            tp.process(data, out);
-            out.flush();
-            out.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        Writer out = new OutputStreamWriter(new FileOutputStream(file), "UTF-8");
+        tp.setEncoding("UTF-8");
+        tp.process(data, out);
+        out.flush();
+        out.close();
     }
 }

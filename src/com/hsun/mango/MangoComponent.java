@@ -3,9 +3,11 @@ package com.hsun.mango;
 import com.intellij.openapi.components.ApplicationComponent;
 import com.intellij.psi.PsiField;
 import com.intellij.psi.PsiType;
+import freemarker.template.TemplateException;
 import org.apache.commons.lang.StringUtils;
 import org.jetbrains.annotations.NotNull;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -35,7 +37,7 @@ public class MangoComponent implements ApplicationComponent {
         return "com.hsun.mango.MangoComponent";
     }
 
-    public void g(String bean, String basePackage, String path, PsiField[] fields) {
+    public void g(String bean, String basePackage, String path, PsiField[] fields) throws IOException, TemplateException {
         Map<String, Object> map = new HashMap();
         map.put("bean", bean);
         map.put("table", "t" + c2_(bean));
