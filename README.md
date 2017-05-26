@@ -6,4 +6,4 @@ mango代码生成插件
 
 使用：[下载插件安装](mango-generator-idea.zip)，在需要生成的java实体类上右键->MangoG
 
-![g.gif](g.gif)
+![i-g.gif](i-g.gif)

@@ -7,6 +7,7 @@ import com.intellij.openapi.actionSystem.DataKeys;
 import com.intellij.openapi.application.Application;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.project.Project;
+import com.intellij.openapi.ui.Messages;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.PsiClass;
 import com.intellij.psi.PsiField;
@@ -41,6 +42,8 @@ public class MangoGAction extends AnAction {
         Application application = ApplicationManager.getApplication();
         MangoComponent component = application.getComponent(MangoComponent.class);
         component.g(file.getNameWithoutExtension(), basePackage, file.getParent().getParent().getPath(),fields);
+
+        Messages.showMessageDialog(project, "代码生成成功", "MangoG", Messages.getInformationIcon());
     }
 
     @Override
