@@ -1,6 +1,6 @@
 package ${basePackage}.service.impl;
 
-import ${basePackage}.dao.${bean}Dao;
+import ${basePackage}.dao.I${bean}Dao;
 import ${basePackage}.bean.${bean};
 import ${basePackage}.service.I${bean}Service;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +12,7 @@ import java.util.List;
 public class ${bean}ServiceImpl implements I${bean}Service {
 
     @Autowired
-    private ${bean}Dao dao;
+    private I${bean}Dao dao;
 
     @Override
     public long save(${bean} object) {
@@ -20,8 +20,8 @@ public class ${bean}ServiceImpl implements I${bean}Service {
     }
 
     @Override
-    public long save(List<${bean}> objects) {
-        return this.dao.save(objects);
+    public void save(List<${bean}> objects) {
+        this.dao.save(objects);
     }
 
     @Override
