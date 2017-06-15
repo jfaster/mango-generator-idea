@@ -20,6 +20,11 @@ public class ${bean}ServiceImpl implements I${bean}Service {
     }
 
     @Override
+    public long save(List<${bean}> objects) {
+        return this.dao.save(objects);
+    }
+
+    @Override
     public void update(${bean} object) {
         this.dao.update(object);
     }

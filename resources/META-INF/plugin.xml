@@ -11,6 +11,7 @@
     ]]></description>
 
   <change-notes><![CDATA[
+      v0.0.4:增加批量保存<br>
       v0.0.3:增加驼峰转下划线<br>
       v0.0.2:增加建表语句生成<br>
       v0.0.1:半成品<br>

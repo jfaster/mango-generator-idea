@@ -49,7 +49,7 @@ public class MangoComponent implements ApplicationComponent {
             results.put(cname, p(type.getCanonicalText(), cname));
         }
         map.put("results", results);
-        SourceGenerator.generate("dao.ftl", map, path + "/dao/" + bean + "Dao.java");
+        SourceGenerator.generate("dao.ftl", map, path + "/dao/I" + bean + "Dao.java");
         SourceGenerator.generate("service.ftl", map, path + "/service/I" + bean + "Service.java");
         SourceGenerator.generate("serviceImpl.ftl", map, path + "/service/impl/" + bean + "ServiceImpl.java");
         SourceGenerator.generate("control.ftl", map, path + "/control/" + bean + "Control.java");

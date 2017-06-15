@@ -16,12 +16,15 @@ import java.util.List;
         @Result(column = "${results[key]}", property = "${key}")<#if key_has_next>,</#if>
     </#list>
 })
-public interface ${bean}Dao {
+public interface I${bean}Dao {
     String COLUMNS = "<#list keys as key>${results[key]}<#if key_has_next>, </#if></#list>";
 
     @ReturnGeneratedId
     @SQL("INSERT INTO #table(" + COLUMNS + ") VALUES (<#list keys as key>:1.${key}<#if key_has_next>, </#if></#list>)")
     long save(${bean} object);
+
+    @SQL("INSERT INTO #table(" + COLUMNS + ") VALUES (<#list keys as key>:1.${key}<#if key_has_next>, </#if></#list>)")
+    void save(List<${bean}> objects);
 
     @SQL("UPDATE #table SET <#list keys as key>${results[key]} = :${key}<#if key_has_next>, </#if></#list> WHERE n_id = :id")
     void update(${bean} object);

@@ -8,6 +8,8 @@ public interface I${bean}Service {
 
     long save(${bean} object);
 
+    void save(List<${bean}> objects);
+
     void update(${bean} object);
 
     ${bean} get(Long id);
