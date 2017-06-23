@@ -85,9 +85,9 @@ public class MangoComponent implements ApplicationComponent {
                 column = "n_" + c2_(field.getName());
                 field.setColumn(column);
 
-                sql = "`" + column  + "` bigint(20)";
+                sql = "`" + column  + "` bigint(20) ";
                 if (field.getName().equals("id")) {
-                    sql += " NOT NULL AUTO_INCREMENT ";
+                    sql += "NOT NULL AUTO_INCREMENT ";
                 }
                 sql += comment(field.getComment());
                 field.setSql(sql);
@@ -110,7 +110,7 @@ public class MangoComponent implements ApplicationComponent {
                 column = "n_" + c2_(field.getName());
                 field.setColumn(column);
 
-                sql = "`" + column  + "` int(11)" + comment(field.getComment());
+                sql = "`" + column  + "` int(11) " + comment(field.getComment());
                 field.setSql(sql);
                 return true;
             case "java.lang.String":
@@ -118,7 +118,7 @@ public class MangoComponent implements ApplicationComponent {
                 column = "c_" + c2_(field.getName());
                 field.setColumn(column);
 
-                sql = "`" + column  + "` varchar(255)" + comment(field.getComment());
+                sql = "`" + column  + "` varchar(255) " + comment(field.getComment());
                 field.setSql(sql);
                 return true;
             default:
@@ -132,7 +132,7 @@ public class MangoComponent implements ApplicationComponent {
      * @return
      */
     private static String comment(String comment) {
-        return null == comment ? "" : (" COMMENT '" + comment + "'");
+        return null == comment ? "" : ("COMMENT '" + comment + "'");
     }
 
     private static String p(String type, String name) {
