@@ -17,13 +17,13 @@ public class ${bean}Control {
     private I${bean}Service service;
 
     @RequestMapping("save")
-    public void save(${bean} object) {
-        this.service.save(object);
+    public void save(${bean} ${bean?uncap_first}) {
+        this.service.save(${bean?uncap_first});
     }
 
     @RequestMapping("update")
-    public void update(${bean} object) {
-        this.service.update(object);
+    public void update(${bean} ${bean?uncap_first}) {
+        this.service.update(${bean?uncap_first});
     }
 
     @RequestMapping("get")

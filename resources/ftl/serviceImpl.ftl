@@ -15,18 +15,18 @@ public class ${bean}ServiceImpl implements I${bean}Service {
     private I${bean}Dao dao;
 
     @Override
-    public long save(${bean} object) {
-        return this.dao.save(object);
+    public long save(${bean} ${bean?uncap_first}) {
+        return this.dao.save(${bean?uncap_first});
     }
 
     @Override
-    public void save(List<${bean}> objects) {
-        this.dao.save(objects);
+    public void save(List<${bean}> ${bean?uncap_first}s) {
+        this.dao.save(${bean?uncap_first}s);
     }
 
     @Override
-    public void update(${bean} object) {
-        this.dao.update(object);
+    public void update(${bean} ${bean?uncap_first}) {
+        this.dao.update(${bean?uncap_first});
     }
 
     @Override

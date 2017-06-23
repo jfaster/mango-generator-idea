@@ -6,11 +6,11 @@ import java.util.List;
 
 public interface I${bean}Service {
 
-    long save(${bean} object);
+    long save(${bean} ${bean?uncap_first});
 
-    void save(List<${bean}> objects);
+    void save(List<${bean}> ${bean?uncap_first}s);
 
-    void update(${bean} object);
+    void update(${bean} ${bean?uncap_first});
 
     ${bean} get(Long id);
 

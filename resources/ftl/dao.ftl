@@ -11,23 +11,22 @@ import java.util.List;
 
 @DB(table="${table}")
 @Results({
-    <#assign keys=results?keys/>
-    <#list keys as key>
-        @Result(column = "${results[key]}", property = "${key}")<#if key_has_next>,</#if>
+    <#list mFields as item>
+        @Result(column = "${item.column}", property = "${item.name}")<#if item_has_next>,</#if>
     </#list>
 })
 public interface I${bean}Dao {
-    String COLUMNS = "<#list keys as key>${results[key]}<#if key_has_next>, </#if></#list>";
+    String COLUMNS = "<#list mFields as item>${item.column}<#if item_has_next>, </#if></#list>";
 
     @ReturnGeneratedId
-    @SQL("INSERT INTO #table(" + COLUMNS + ") VALUES (<#list keys as key>:1.${key}<#if key_has_next>, </#if></#list>)")
-    long save(${bean} object);
+    @SQL("INSERT INTO #table(" + COLUMNS + ") VALUES (<#list mFields as item>:${item.name}<#if item_has_next>, </#if></#list>)")
+    long save(${bean} ${bean?uncap_first});
 
-    @SQL("INSERT INTO #table(" + COLUMNS + ") VALUES (<#list keys as key>:1.${key}<#if key_has_next>, </#if></#list>)")
-    void save(List<${bean}> objects);
+    @SQL("INSERT INTO #table(" + COLUMNS + ") VALUES (<#list mFields as item>:${item.name}<#if item_has_next>, </#if></#list>)")
+    void save(List<${bean}> ${bean?uncap_first}s);
 
-    @SQL("UPDATE #table SET <#list keys as key>${results[key]} = :${key}<#if key_has_next>, </#if></#list> WHERE n_id = :id")
-    void update(${bean} object);
+    @SQL("UPDATE #table SET <#list mFields as item>${item.column} = :${item.name}<#if item_has_next>, </#if></#list> WHERE n_id = :id")
+    void update(${bean} ${bean?uncap_first});
 
     @SQL("SELECT " + COLUMNS + " FROM #table WHERE n_id = :1 ")
     ${bean} get(Long id);
