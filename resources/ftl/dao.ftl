@@ -9,6 +9,13 @@ import org.jfaster.mango.annotation.SQL;
 
 import java.util.List;
 
+/**
+ * TODO 增加注释
+ *
+ * @author MangoG
+ * @version 1.0
+ * @since ${date}
+ */
 @DB(table="${table}")
 @Results({
     <#list mFields as item>

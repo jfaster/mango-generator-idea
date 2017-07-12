@@ -9,6 +9,7 @@ import org.apache.commons.lang.StringUtils;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
@@ -38,9 +39,13 @@ public class MangoComponent implements ApplicationComponent {
 
     public void g(String bean, String basePackage, String path, PsiField[] fields) throws IOException, TemplateException {
         Map<String, Object> map = new HashMap();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:ss:mm");
+        String date = sdf.format(new Date());
+
         map.put("bean", bean);
         map.put("table", "t" + c2_(bean));
         map.put("basePackage", basePackage);
+        map.put("date", date);
         List<MangoField> mFields = new ArrayList<>();
 //        Map<String, String> results = new LinkedHashMap<>();
         for (PsiField psiField : fields) {

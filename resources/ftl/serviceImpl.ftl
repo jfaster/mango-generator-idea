@@ -8,6 +8,13 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * TODO 增加注释
+ *
+ * @author MangoG
+ * @version 1.0
+ * @since ${date}
+ */
 @Service
 public class ${bean}ServiceImpl implements I${bean}Service {
 

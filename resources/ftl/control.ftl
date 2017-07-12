@@ -9,6 +9,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
+/**
+ * TODO 增加注释
+ *
+ * @author MangoG
+ * @version 1.0
+ * @since ${date}
+ */
 @Controller
 @RequestMapping("/${bean?uncap_first}/")
 public class ${bean}Control {
